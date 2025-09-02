@@ -40,49 +40,38 @@ automation_dashboard/
 │── Automation_Dashboard.xlsx (optional, local testing)
 │── README.md # Documentation
 
-Install dependencies
+1. Install dependencies
 pip install -r requirements.txt
 
-3. Run locally
+2. Run locally
 streamlit run app.py
-
-
 The app will be available at http://localhost:8501.
 
 🌐 Deploy to Streamlit Cloud
 
-Push this repo to GitHub (including app.py, requirements.txt, and optionally your Excel file).
-
-Go to Streamlit Community Cloud
- and sign in with GitHub.
-
-Select your repo and deploy.
+1. Push this repo to GitHub (including app.py, requirements.txt, and optionally your Excel file).
+2. Go to Streamlit Community Cloud and sign in with GitHub.
+3. Select your repo and deploy.
 
 Your app will be live at:
-
 https://<your-app-name>.streamlit.app
 
 🔗 Data Source Options
 
 Local file: Place Automation_Dashboard.xlsx in the repo root.
-
 Remote URL: Update app.py with your file link:
-
 url = "https://your-server.com/Automation_Dashboard.xlsx"
 df = pd.read_excel(url, sheet_name=0)
 
 📊 Example KPIs
 
 Functional Coverage → Percentage of critical modules covered by automation.
-
 Regression Coverage → Percentage of regression test cases automated.
-
 Automation Coverage → Automated cases ÷ (Total cases – Not automatable).
 
 ✅ Requirements
 
 Your requirements.txt should contain:
-
 streamlit
 pandas
 plotly
