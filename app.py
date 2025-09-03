@@ -1,4 +1,3 @@
-
 import subprocess
 import sys
 # install plotly if missing
@@ -53,16 +52,15 @@ if "Regression" in df.columns:
 st.title("Automation Dashboard")
 
 # KPIs principales
-col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
+col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("Total Cases", total_cases)
 col2.metric("Automated", automated)
 col3.metric("Pending", to_be_automated)
 col4.metric("Not Automatable", not_automated)
 col5.metric("Coverage", f"{coverage:.2f}%")
 
-
 # --- Side by side charts ---
-col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 2])
+col1, col2 = st.columns(2)
 
 with col1:
     # Pie Chart - Automation Coverage
