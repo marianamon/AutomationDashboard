@@ -59,8 +59,11 @@ col3.metric("Pending", to_be_automated)
 col4.metric("Not Automatable", not_automated)
 col5.metric("Coverage", f"{coverage:.2f}%")
 
-# --- Side by side charts ---
-col1, col2 = st.columns(2)
+# --- Side by side charts (centered and wider) ---
+st.markdown("## Charts")
+
+# Columnas con proporciones para centrar
+left_spacer, col1, col2, right_spacer = st.columns([0.5, 2, 2, 0.5])
 
 with col1:
     # Pie Chart - Automation Coverage
@@ -83,7 +86,6 @@ with col2:
     fig_bar.update_traces(textposition="outside", marker_color="royalblue")
     fig_bar.update_layout(yaxis_title="Count", xaxis_title="", showlegend=False)
     st.plotly_chart(fig_bar, use_container_width=True)
-
 
 
 # --- Gauge charts for Functional & Regression Coverage ---
@@ -112,5 +114,6 @@ if functional_coverage is not None or regression_coverage is not None:
 # --- Data Table ---
 st.subheader("Detailed Data")
 st.dataframe(df)
+
 
 
