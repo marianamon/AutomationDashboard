@@ -1,3 +1,8 @@
+
+import subprocess
+import sys
+# install plotly if missing
+subprocess.check_call([sys.executable, "-m", "pip", "install", "plotly", "pandas", "openpyxl"])
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -108,3 +113,4 @@ if functional_coverage is not None or regression_coverage is not None:
 # --- Data Table ---
 st.subheader("Detailed Data")
 st.dataframe(df)
+
