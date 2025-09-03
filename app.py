@@ -63,7 +63,7 @@ col5.metric("Coverage", f"{coverage:.2f}%")
 st.markdown("## Charts")
 
 # Columnas con proporciones para centrar
-left_spacer, col1, col2, right_spacer = st.columns([0.5, 2, 2, 0.5])
+left_spacer, col1, col2, right_spacer = st.columns([3, 2, 2, 3])
 
 with col1:
     # Pie Chart - Automation Coverage
@@ -114,6 +114,7 @@ if functional_coverage is not None or regression_coverage is not None:
 # --- Data Table ---
 st.subheader("Detailed Data")
 st.dataframe(df)
+
 
 
 
