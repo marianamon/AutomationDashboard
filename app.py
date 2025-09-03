@@ -64,14 +64,24 @@ col5.metric("Coverage", f"{coverage:.2f}%")
 left_spacer, col1, col2, right_spacer = st.columns([0.1, 2, 2, 0.1])
 
 with col1:
-    # Pie Chart - Automation Coverage
+    # Pie Chart - Automation Coverage (donut style, labels outside)
     fig_pie = px.pie(
         names=["Automated", "To be automated"],
         values=[automated, to_be_automated],
-        title="Automation Coverage"
+        title="Automation Coverage",
+        hole=0.4  # convierte en donut, da más espacio
     )
-    fig_pie.update_traces(textinfo="percent+label")
+    fig_pie.update_traces(
+        textinfo="percent+label",  # porcentaje + etiqueta
+        textposition="outside",   # mueve los labels afuera
+        pull=[0.05, 0]            # opcional: resalta el primer slice
+    )
+    fig_pie.update_layout(
+        margin=dict(t=50, b=50, l=50, r=50),  # más márgenes
+        showlegend=True
+    )
     st.plotly_chart(fig_pie, use_container_width=True)
+
 
 with col2:
     # Bar Chart - Total Test Scope
@@ -112,6 +122,7 @@ if functional_coverage is not None or regression_coverage is not None:
 # --- Data Table ---
 st.subheader("Detailed Data")
 st.dataframe(df)
+
 
 
 
