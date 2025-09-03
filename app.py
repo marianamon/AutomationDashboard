@@ -91,11 +91,20 @@ with col2:
         text=[total_cases, automated, to_be_automated, not_automated],
         title="Total Test Scope"
     )
-    fig_bar.update_traces(textposition="outside", marker_color="royalblue")
-    fig_bar.update_layout(yaxis_title="Count", xaxis_title="", showlegend=False)
+    fig_bar.update_traces(
+        textposition="outside",
+        marker_color="royalblue"
+    )
+    # Ajustar rango en Y para evitar cortes
+    max_val = max(total_cases, automated, to_be_automated, not_automated)
+    fig_bar.update_layout(
+        yaxis=dict(range=[0, max_val * 1.2]),  # +20% de aire arriba
+        yaxis_title="Count",
+        xaxis_title="",
+        showlegend=False,
+        margin=dict(t=50, b=50, l=50, r=50)  # más aire en la figura
+    )
     st.plotly_chart(fig_bar, use_container_width=True)
-
-
 # --- Gauge charts for Functional & Regression Coverage ---
 if functional_coverage is not None or regression_coverage is not None:
     st.subheader("Coverage KPIs")
@@ -120,8 +129,9 @@ if functional_coverage is not None or regression_coverage is not None:
         col7.plotly_chart(fig_rc, use_container_width=True)
 
 # --- Data Table ---
-st.subheader("Detailed Data")
+st.subheader("Detailed test cases")
 st.dataframe(df)
+
 
 
 
